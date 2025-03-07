@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Nest</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <h1>BuyNest</h1>
+        <nav>
+            <ul class="navigation">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="nearbyshops.html">Nearby Shops</a></li>
+                <li><a href="aicompanion.html">AI Companion</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for products...">
+            <button onclick="searchProducts()">Search</button>
+        </div>
+
+        <!-- Quote/Prompt Section -->
+        <div class="quote-section">
+        <p>"Shop wisely, live happily."</p>
+        <p>Discover your favorite products below:</p>
+        </div>
+
+        <!-- Collapsible Sections -->
+        <main>
+            <div class="categories">
+                <h2>Clothing & Accessories</h2>
+                <div class="product-list">
+                    <div class="product-item">
+                        <img src="dress.png" alt="Dress 1">
+                        <p>Elegant Dress</p>
+                    </div>
+                    <div class="product-item">
+                        <img src="dresses2.png" alt="Dress 2">
+                        <p>Casual Dress</p>
+                    </div>
+                </div>
+        
+                <h2>Mobiles & Accessories</h2>
+                <div class="product-list">
+                    <div class="product-item">
+                        <img src="mobiles.png" alt="Mobile 1">
+                        <p>Smartphone XYZ</p>
+                    </div>
+                    <div class="product-item">
+                        <img src="mobiles2.png" alt="Mobile 2">
+                        <p>Smartphone ABC</p>
+                    </div>
+                </div>
+        
+                <h2>Electronics</h2>
+                <div class="product-list">
+                    <div class="product-item">
+                        <img src="electronic-device.png" alt="Electronic 1">
+                        <p>Headphones</p>
+                    </div>
+                    <div class="product-item">
+                        <img src="electronic-devices2.png" alt="Electronic 2">
+                        <p>Smartwatch</p>
+                    </div>
+                </div>
+        
+                <h2>Groceries</h2>
+                <div class="product-list">
+                    <div class="product-item">
+                        <img src="groceries.png" alt="Grocery 1">
+                        <p>Fresh Vegetables</p>
+                    </div>
+                    <div class="product-item">
+                        <img src="groceries2.png" alt="Grocery 2">
+                        <p>Fruits</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </main>    
+
+    <script>
+        // JavaScript for collapsible functionality
+        const collapsibles = document.querySelectorAll(".collapsible");
+        collapsibles.forEach(btn => {
+            btn.addEventListener("click", () => {
+                btn.classList.toggle("active");
+                const content = btn.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

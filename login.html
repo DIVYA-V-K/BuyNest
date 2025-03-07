@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Register - BuyNest</title>
+  <style>
+   body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: url('login.png') no-repeat center center/cover; /* Full screen cover image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Stack the header and form vertically */
+  height: 100vh;
+  background-color: #F4F5F7; /* Subtle light gray background for cleanliness */
+  color: #FFFFFF; /* White text */
+}
+
+header {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 20px; /* Give some space from the top of the page */
+  text-align: center;
+  width: fit-content; /* Make the width only as wide as the text */
+  padding: 10px 0;
+  color: #FFFFFF; /* Text color */
+  border-radius: 8px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Slight transparency to maintain readability */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Gentle shadow for elegance */
+  text-align: center;
+  margin-top: 30px; /* Space between header and form */
+  box-sizing: border-box; /* Ensure padding and borders are included in the width */
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333333; /* Neutral dark gray for the form title */
+}
+
+.form-container p {
+  font-size: 14px;
+  color: #555555; /* Subtle gray for the description */
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333333; /* Neutral dark gray for form labels */
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #D1D5DB; /* Soft gray border for inputs */
+  border-radius: 8px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box; /* Include padding and borders in width */
+}
+
+.form-group input:focus {
+  border-color: #2563EB; /* Bright blue focus */
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.5); /* Subtle glow effect */
+  outline: none;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #2563EB; /* Vibrant blue button */
+  color: #FFFFFF; /* White text for contrast */
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  background-color: #1E40AF; /* Slightly darker blue on hover */
+  box-shadow: 0 4px 8px rgba(30, 64, 175, 0.2); /* Glow effect on hover */
+}
+
+.links {
+  margin-top: 15px;
+}
+
+.links a {
+  text-decoration: none;
+  color: #2563EB; /* Matching blue for links */
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.links a:hover {
+  color: #1E40AF; /* Darker blue for hover */
+  text-decoration: underline;
+}
+
+
+  </style>
+</head>
+<body>
+  <header>BuyNest</header>
+  <div class="container">
+    <div class="form-container" id="form-container">
+      <!-- Login Form -->
+      <div id="login-form" class="form-content">
+        <h2>Welcome Back!</h2>
+        <p>Login to your account and continue shopping with us.</p>
+        <form action="login.php" method="post">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+          </div>
+          <button type="submit" class="btn">Login</button>
+        </form>
+        <div class="links">
+          <p><a href="forgot-password.html">Forgot Password?</a></p>
+          <p>Don't have an account? <a href="#" id="show-register-form">Register Here</a></p>
+        </div>
+      </div>
+
+      <!-- Registration Form -->
+      <div id="register-form" class="form-content" style="display: none;">
+        <h2>Create Your Account</h2>
+        <form action="connect.php" method="POST">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required placeholder="Enter your last name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+          </div>
+          <button type="submit" class="btn">Register</button>
+        </form>
+        <div class="links">
+          <p>Already have an account? <a href="#" id="show-login-form">Login Here</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle between login and register forms
+    document.getElementById('show-register-form').addEventListener('click', function() {
+      document.getElementById('login-form').style.display = 'none';
+      document.getElementById('register-form').style.display = 'block';
+    });
+
+    document.getElementById('show-login-form').addEventListener('click', function() {
+      document.getElementById('register-form').style.display = 'none';
+      document.getElementById('login-form').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

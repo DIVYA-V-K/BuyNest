@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Companion - BuyNest</title>
+
+    <style>
+        /* Center everything on the page */
+    
+        body {
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        justify-content: flex-start;  /* Align items at the top */
+        align-items: center;  /* Center items horizontally */
+        min-height: 100vh; /* Full viewport height */
+        margin: 0;
+        background-color: #f4f4f9;
+        flex-direction: column;
+    }
+
+        .site-header {
+            text-align: center;
+            padding: 20px 10px;
+            background-color: #1F2937; /* Dark gray-blue for a professional background */
+            border-bottom: 2px solid #E5E7EB; /* Subtle light-gray bottom border */
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .site-header h1 {
+            font-family: 'Roboto', sans-serif; /* Clean and modern font */
+            font-size: 36px;
+            font-weight: bold;
+            color: #F9FAFB; /* White text for good contrast */
+            margin: 0;
+        }
+
+        .site-header .navigation {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .site-header .navigation li {
+            margin: 0 15px;
+        }
+
+        .site-header .navigation li a {
+            text-decoration: none;
+            color: #9CA3AF; /* Muted gray for links */
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .site-header .navigation li a:hover {
+            color: #38BDF8; /* Soft sky-blue for hover effect */
+        }
+
+
+        /* Container for the camera section */
+        .camera-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* Camera section */
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            border: 4px solid #1D4ED8; /* Adding a stylish border */
+        }
+
+        #capture {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 16px;
+            background-color: #1D4ED8;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #capture:hover {
+            background-color: #45a049;
+        }
+
+        /* Retake button style */
+        #retake {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        #retake:hover {
+            background-color: #e53935;
+        }
+
+        /* Recommendations Section */
+        #recommendations {
+            display: none;
+            margin-top: 30px;
+        }
+
+        /* Recommendation product style */
+        .product {
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .product p {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Suggestion Button Style */
+        #suggestMore {
+            background-color: #2196F3;
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        #suggestMore:hover {
+            background-color: #1e88e5;
+        }
+
+        /* Style the quotes */
+        .quotes {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            text-align: center;
+            background-color: #FFF8E1; /* Light yellow background */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 700px;
+            margin: 20px auto;
+        }
+
+        .quotes p {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .quotes p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Button styling */
+        #capture, #retake, #suggestMore {
+            padding: 15px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Site Header with BuyNest title and navigation bar -->
+    <div class="site-header">
+        <h1>BuyNest</h1>
+        <ul class="navigation">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </div>
+    <h2>Your Personalized Recommendations</h2>
+
+    <!-- Display Quotes -->
+    <div class="quotes">
+        <p>"Fashion is the armor to survive the reality of everyday life."</p>
+        <p>"The best way to predict your future is to create it."</p>
+    </div>
+
+    <!-- Camera Section -->
+    <div class="camera-container">
+        <video id="video" width="500" height="375" autoplay></video> <!-- Increased size -->
+        <button id="capture">Take Photo</button>
+        <button id="retake">Retake Photo</button>
+        <canvas id="canvas" style="display:none;"></canvas>
+        <div id="photoContainer" style="display:none;">
+            <h3>Your Photo</h3>
+            <img id="photo" alt="Captured Photo" width="500" height="375">
+        </div>
+    </div>
+
+    <!-- Recommendations Section -->
+    <div id="recommendations">
+        <h3>Suggested Dresses Based on Your Look:</h3>
+        <div id="suggestions"></div>
+        <button id="suggestMore">Get More Suggestions</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const video = document.getElementById('video');
+            const captureButton = document.getElementById('capture');
+            const retakeButton = document.getElementById('retake');
+            const photoContainer = document.getElementById('photoContainer');
+            const photoElement = document.getElementById('photo');
+            const canvas = document.getElementById('canvas');
+            const recommendations = document.getElementById('recommendations');
+            const suggestionsContainer = document.getElementById('suggestions');
+            const suggestMoreButton = document.getElementById('suggestMore');
+
+            // Start video stream
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then((stream) => {
+                    video.srcObject = stream;
+                })
+                .catch((err) => {
+                    console.error("Camera error: ", err);
+                });
+
+            // Capture the photo
+            captureButton.addEventListener('click', () => {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                // Display the photo
+                const imageData = canvas.toDataURL('image/png');
+                photoElement.src = imageData;
+                photoContainer.style.display = 'block';
+                captureButton.style.display = 'none';
+                retakeButton.style.display = 'inline-block';
+
+                // Show recommendation section
+                recommendations.style.display = 'block';
+
+                // Example: AI Recommendation - Display some suggested products
+                fetch('backend/recommend.php')  // Replace with your actual backend endpoint
+                    .then(response => response.json())
+                    .then(products => {
+                        products.forEach(product => {
+                            const productDiv = document.createElement('div');
+                            productDiv.className = 'product';
+                            productDiv.innerHTML = `
+                                <img src="${product.image}" alt="${product.name}">
+                                <p>${product.name} - ${product.price}</p>
+                            `;
+                            suggestionsContainer.appendChild(productDiv);
+                        });
+                    });
+            });
+
+            // Retake the photo
+            retakeButton.addEventListener('click', () => {
+                photoContainer.style.display = 'none';
+                captureButton.style.display = 'inline-block';
+                retakeButton.style.display = 'none';
+                recommendations.style.display = 'none';  // Hide suggestions
+            });
+
+            // Show more suggestions (for example)
+            suggestMoreButton.addEventListener('click', () => {
+                fetch('backend/recommend.php')  // Fetch more suggestions from your backend
+                    .then(response => response.json())
+                    .then(products => {
+                        products.forEach(product => {
+                            const productDiv = document.createElement('div');
+                            productDiv.className = 'product';
+                            productDiv.innerHTML = `
+                                <img src="${product.image}" alt="${product.name}">
+                                <p>${product.name} - ${product.price}</p>
+                            `;
+                            suggestionsContainer.appendChild(productDiv);
+                        });
+                    });
+            });
+        });
+    </script>
+</body>
+</html>

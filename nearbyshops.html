@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Shops - BuyNest</title>
+
+    <!-- Leaflet CSS for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <style>
+        /* Basic styles for the page */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        /* Header section */
+        .site-header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #1F2937; /* Dark gray-blue */
+            border-bottom: 2px solid #E5E7EB; /* Light-gray border */
+            width: 100%;
+        }
+
+        .site-header h1 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #F9FAFB; /* White text */
+            margin: 0;
+        }
+
+        .site-header .navigation {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 10px 0 0;
+            padding: 0;
+        }
+
+        .site-header .navigation li {
+            margin: 0 15px;
+        }
+
+        .site-header .navigation li a {
+            text-decoration: none;
+            color: #9CA3AF; /* Muted gray for links */
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .site-header .navigation li a:hover {
+            color: #38BDF8; /* Sky-blue hover effect */
+        }
+
+        /* Map Section */
+        #map {
+            width: 90%; /* Responsive width */
+            max-width: 1000px; /* Maximum map width */
+            height: 400px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Shop List */
+        .shop-list {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .shop-item {
+            padding: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .shop-item:last-child {
+            border-bottom: none;
+        }
+
+        .shop-item h3 {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .shop-item p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .stars {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Site Header -->
+    <div class="site-header">
+        <h1>BuyNest</h1>
+        <ul class="navigation">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </div>
+
+    <!-- Map Section -->
+    <div id="map"></div>
+
+    <!-- Shop List Section -->
+    <div class="shop-list">
+        <div class="shop-item">
+            <h3>Shop Name: Fashion Hub</h3>
+            <p>Location: 123 Main St, Downtown</p>
+            <p>Reviews: <span class="stars">★★★★★</span> (5/5)</p>
+        </div>
+        <div class="shop-item">
+            <h3>Shop Name: Trendy Tees</h3>
+            <p>Location: 45 High Street, Uptown</p>
+            <p>Reviews: <span class="stars">★★★★☆</span> (4/5)</p>
+        </div>
+        <div class="shop-item">
+            <h3>Shop Name: The Style Spot</h3>
+            <p>Location: 78 Elm Rd, Midtown</p>
+            <p>Reviews: <span class="stars">★★★☆☆</span> (3/5)</p>
+        </div>
+        <div class="shop-item">
+            <h3>Shop Name: Chic Boutique</h3>
+            <p>Location: 56 Park Ave, Suburbs</p>
+            <p>Reviews: <span class="stars">★★★★☆</span> (4/5)</p>
+        </div>
+    </div>
+
+    <!-- Leaflet JS for Map -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map and set its view to a chosen location
+        const map = L.map('map').setView([51.505, -0.09], 13);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add markers for each shop
+        L.marker([51.5, -0.09]).addTo(map)
+            .bindPopup('<b>Fashion Hub</b><br>123 Main St, Downtown')
+            .openPopup();
+
+        L.marker([51.495, -0.083]).addTo(map)
+            .bindPopup('<b>Trendy Tees</b><br>45 High Street, Uptown');
+
+        L.marker([51.49, -0.1]).addTo(map)
+            .bindPopup('<b>The Style Spot</b><br>78 Elm Rd, Midtown');
+
+        L.marker([51.505, -0.095]).addTo(map)
+            .bindPopup('<b>Chic Boutique</b><br>56 Park Ave, Suburbs');
+    </script>
+</body>
+</html>
