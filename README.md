@@ -75,7 +75,7 @@ BuyNest/
 **Divya V K**  
 🎓 B.E. Computer Science & Engineering  
 💡 Interests: *AI, Data Analytics, Web Development*  
-🔗 [GitHub](https://github.com/DIVYA-V-K) | [LinkedIn](#)  
+🔗 [GitHub](https://github.com/DIVYA-V-K) | [LinkedIn](https://www.linkedin.com/in/divya-v-1b19b0259/)  
 
 ---
 
