@@ -1,4 +1,4 @@
-[README.md](https://github.com/user-attachments/files/21807781/README.md)
+
 # 🛍️ BuyNest  
 
 **BuyNest** is an **AI-powered e-commerce platform** that offers a personalized shopping experience.  
