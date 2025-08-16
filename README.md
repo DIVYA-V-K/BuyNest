@@ -1,8 +1,13 @@
 
+
 # 🛍️ BuyNest  
 
 **BuyNest** is an **AI-powered e-commerce platform** that offers a personalized shopping experience.  
 It allows users to browse products, receive AI-driven recommendations, locate nearby shops, and manage secure purchases with easy returns.  
+
+
+<img width="1024" height="1024" alt="ChatGPT Image Aug 16, 2025, 09_53_48 AM" src="https://github.com/user-attachments/assets/4ab504a8-8318-431f-971a-9306a82f7420" />
+
 
 ---
 
