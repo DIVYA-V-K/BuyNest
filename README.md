@@ -6,7 +6,10 @@
 It allows users to browse products, receive AI-driven recommendations, locate nearby shops, and manage secure purchases with easy returns.  
 
 
-<img width="1024" height="1024" alt="ChatGPT Image Aug 16, 2025, 09_53_48 AM" src="https://github.com/user-attachments/assets/4ab504a8-8318-431f-971a-9306a82f7420" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4ab504a8-8318-431f-971a-9306a82f7420" alt="BuyNest Logo" width="120"/>
+</p>
+
 
 
 ---
@@ -67,14 +70,6 @@ BuyNest/
 
 ---
 
-## 📸 Screenshots  
-*(Add images of homepage, login page, cart, nearby shops, etc.)*  
-
-Example:  
-![Homepage](assets/home.png)  
-![AI Companion](assets/aicompanion.png)  
-
----
 
 ## 👩‍💻 Author  
 **Divya V K**  
